@@ -1,0 +1,38 @@
+ 1.	SELECT DISTINCT plataforma FROM `juegos`;
+ 2.	SELECT *FROM `juegos` WHERE precioAlquiler > 4 AND precioAlquiler <=6;
+ 3.	SELECT * FROM `juegos` ORDER by plataforma, nombre DESC;
+ 4. 	SELECT nombre, precioVenta FROM `juegos` WHERE precioVenta <40;
+ 5. 	SELECT * FROM `juegos` WHERE plataforma = "pc";
+ 6. 	SELECT DISTINCT plataforma, precioAlquiler FROM `juegos`;
+ 7. 	SELECT nombre FROM `juegos` WHERE plataforma = "xbox" ORDER by precioVenta ASC LIMIT 1;
+ 8. 	SELECT id, nombre, precioVenta FROM `juegos` WHERE precioVenta <20 OR precioVenta >30 ORDER by precioVenta;
+ 9. 	SELECT DISTINCT plataforma FROM `juegos` WHERE precioAlquiler =4;
+10. 	SELECT * FROM `juegos` WHERE stockAlquiler is null;
+11.	SELECT * FROM `juegos` WHERE plataforma in ("xbox","pc","playstation") AND precioVenta BETWEEN 20 AND 50 order by nombre DESC;
+12.	SELECT * FROM `juegos` WHERE precioAlquiler in(3,5,8);
+13.	SELECT * FROM `juegos` ORDER by nombre LIMIT 4,3;
+14.	SELECT nombre AS 'xogos.nombre', plataforma AS 'xogos.plataforma' FROM `juegos` LIMIT 3;
+15.	SELECT * FROM `juegos` WHERE nombre NOT like('%&%');
+16.	SELECT DISTINCT plataforma FROM `juegos` WHERE plataforma like('%p%');
+17.	SELECT nombre FROM `juegos` WHERE nombre like('m%');
+18.	SELECT nombre, plataforma FROM `juegos` WHERE nombre like('l%') AND (stockVenta+stockAlquiler) >10;
+19.	SELECT nombre FROM `juegos` WHERE nombre like('l_n%') or nombre like ( 'm_n%');
+20.	SELECT * FROM `juegos` WHERE nombre like('%o%') AND stockVenta >1 AND stockVenta <10 AND precioVenta <30 OR precioVenta>40;
+21.	SELECT * FROM `juegos` WHERE nombre like('_a%')or nombre like('_e%')or nombre like('_i%')or nombre like('_o%')or nombre like('_u%');
+22.	SELECT * FROM `juegos` WHERE nombre not like('_a%') and nombre not like('_e%')and nombre not like('_i%')and nombre not like('_o%')and nombre not like('_u%');
+23.	SELECT nombre, @stock := (stockAlquiler+stockVenta) AS 'stock' FROM `juegos`order by @stock DESC LIMIT 1;
+24.	SELECT nombre , precioAlquiler, ifnull(precioAlquiler*3,0) AS 'alquiler' FROM `juegos`;
+25.	SELECT nombre, precioVenta, stockVenta, (precioVenta*stockVenta) AS venta FROM `juegos`ORDER BY venta DESC LIMIT 1;
+26.	SELECT precioAlquiler, (precioAlquiler*166.386) AS pestasAlquiler, precioVenta, (precioVenta*166.386) pestasVenta FROM `juegos`;
+27.	en el documento;
+28.	SELECT nombre, stockVenta FROM `juegos` WHERE stockVenta <8 or;
+29.	SELECT @stock:= stockAlquiler AS stock FROM `juegos` ORDER BY id LIMIT 5,1;
+30.	
+31.	SELECT nombre FROM `juegos`WHERE precioAlquiler >0;
+32.	SELECT nombre, ifnull(stockAlquiler ,0)+ ifnull (stockVenta ,0) AS stockTotal FROM `juegos`;
+33.	SELECT nombre,@stockTotal:= ifnull(stockAlquiler ,0)+ ifnull (stockVenta ,0) AS stockTotal, if(@stockTotal >10,'Suficiente','No suficiente') as 'Suficiente' FROM `juegos`;
+34.	SELECT nombre, ifnull (stockAlquiler, 'No queda stock') AS mensaje FROM `juegos`;
+35.	SELECT nombre,@stockTotal:= ifnull(stockAlquiler ,0)+ ifnull (stockVenta ,0) AS stockTotal, if(@stockTotal >10,'Suficiente','No suficiente') as 'Suficiente' FROM `juegos` ORDER BY ifnull(stockAlquiler ,0)+ ifnull (stockVenta ,0) DESC LIMIT 5;
+36.	SELECT nombre, plataforma, if(plataforma='pc', 'Varios', if(plataforma='xbox', 'Microsoft','Sony'))AS fabricante FROM `juegos`;
+37.1
+37.2	

@@ -1,0 +1,68 @@
+pautas de entrega:
+1	select * from jugadores; -- Cada ejercicio va en una línea. Esta comienza con el nº de ejercicio, un tabulador y la consulta.
+2	select * from jugadores; select * from jugadores order by nombre; -- Si el ejercicio tiene más de una solución se ponen las distintas soluciones en una única línea separadas por un ;
+3	select * from jugadores order by nombre; -- Otro ejemplo de consulta
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+ejercicios:
+
+01	SELECT * FROM `jugadores`;
+02	SELECT * FROM `jugadores` order by nombre ASC;
+03	SELECT nombre, puntos, Valoracion FROM `jugadores`;
+04	SELECT * FROM `jugadores` order by Valoracion DESC;
+05	SELECT * FROM `jugadores` order by Valoracion DESC, nombre ASC;
+06	SELECT * FROM `jugadores` WHERE minutos > 35;
+07	SELECT * FROM `jugadores` WHERE Nombre = 'kobe bryant';
+08	SELECT nombre, Puntos FROM `jugadores` WHERE Valoracion >= 3;
+09 	SELECT * FROM `jugadores` WHERE Valoracion < 5 AND puntos < 20 ORDER by Nombre;
+10	SELECT * FROM `jugadores` WHERE partidos < 800 or Valoracion = 3 order by puntos , nombre;
+11	SELECT * FROM `jugadores` WHERE partidos >= 800 and partidos <= 1000;
+12	SELECT * FROM JUGADORES WHERE TAPONES <=> NULL;
+13	SELECT * nombre, partidos AS partidos jugados AS asistencias AS asistencias realizadas FROM jugadores 
+14	SELECT nombre, puntos, partidos FROM `jugadores` WHERE partidos >950 AND valoracion =4;
+15	SELECT * FROM `jugadores` WHERE Partidos < 900 OR Partidos >1000; (solucion2) SELECT*FROM jugadores WHERE partidos not BETWEEN 900 AND 1000;
+16	SELECT DISTINCT valoracion FROM `jugadores` ORDER by Valoracion DESC;
+17	SELECT * from jugadores ORDER BY minutos DESC LIMIT 2;
+18	SELECT * from jugadores ORDER BY minutos ASC LIMIT 2;
+19	SELECT * from jugadores ORDER BY Rebotes DESC LIMIT 1 ,3; ( quita A y  muestra B)
+20	SELECT * from jugadores WHERE Nombre LIKE "j%e%";
+21	SELECT * from jugadores WHERE Nombre LIKE "%l" and Rebotes >5;
+22	SELECT * from jugadores WHERE Nombre LIKE "_a%";
+23	SELECT DISTINCT Valoracion from jugadores;
+24	SELECT nombre, Tapones + Asistencias + Rebotes from jugadores;
+25	SELECT nombre, Partidos*0.25 AS "25%" FROM `jugadores`; // SELECT nombre, Partidos/4 AS "25%" FROM `jugadores`;
+
+26  	SELECT Nombre AS "nom", Puntos AS "pun", Rebotes AS "reb" FROM `jugadores`;
+
+27  	SET @jugon=5; SELECT Nombre FROM `jugadores` WHERE Valoracion = @jugon;
+
+28.1 	SELECT * FROM `jugadores` WHERE Tapones is null;
+28.2 	SELECT * FROM `jugadores` WHERE Tapones is not null;
+
+29.1 	SELECT * FROM `jugadores` WHERE partidos =1093 or Partidos = 697 or partidos = 926 or Partidos=687;
+29.2 	SELECT * FROM `jugadores` WHERE partidos in (1093,697,926,687);
+
+30.1 	SELECT * FROM `jugadores` WHERE partidos != 1093 and Partidos != 697 and partidos != 926 and Partidos != 687;
+30.2 	SELECT * FROM `jugadores` WHERE partidos not in (1093,697,926,687);
+
+31.1 	SELECT * FROM `jugadores` WHERE puntos >= 17 and puntos <=24;
+31.2 	SELECT * FROM `jugadores` WHERE puntos between 17 and 24;
+
+32   	SELECT" el jugador", Nombre, "ha metido", Puntos, "puntos" from jugadores;
+
+33.1 	pte revisar SELECT Nombre, IF (Puntos >10 AND Rebotes >10, 'si', 'no') AS 'doble-doble' FROM'jugadores';
+33.2 	pte revisar SELECT Nombre, CASE WHEN puntos > 10 and Rebotes > 10 THEN else 'no' END as  'doble_doble' from jugadores;
+
+34  	SELECT nombre, ifnull (puntos,0) + ifnull (Rebotes,0) + ifnull (tapones,0) AS total FROM jugadores;
+
+35.1 	SELECT ifnull(Puntos, 0)+ifnull (rebotes,0)+ifnull(tapones,0) AS 'suma', IF(Puntos+Rebotes+Tapones IS null, "es nulo", "") as "tiene nulos" FROM jugadores;
+35.2 	pte revisar SELECT(ifnull(Puntos, 0)+ifnull (rebotes,0)+ifnull(tapones,0),1) AS 'suma', IF(Puntos+Rebotes+Tapones IS null, "es nulo", "") as "tiene nulos" FROM jugadores;
+
+36.1	SELECT IFNULL (TAPONES, NOMBRE) AS RESULTADO FROM JUGADORES;
+36.2	SELECT  TAPONES CASE WHEN TAPONES IS NULL THEN NOMBRE ELSE TAPONES END AS TAPONES TROM JUGADORES;
+
+37. 	SELECT  Nombre, IF(Valoracion =5, "Jugon", if(Valoracion =4, "Estrella", if( Valoracion=3, "Bueno", if(valoracion=2, "normal", "paquete")))) FROM `jugadores`;
+
+38. 	SELECT Nombre, CASE Valoracion WHEN 1 THEN "paquete" WHEN 2 THEN "normal" WHEN 3 THEN "bueno" WHEN 4 THEN "estrella" ELSE "jugon" END AS 'valoracion' FROM `jugadores`;
+39.	SELECT Nombre, CASE WHEN partidos > 1000 THEN ' carrera larga' WHEN partidos > 700 AND Partidos <=1000 THEN 'Carrera normal' ELSE 'carrera corta' END AS 'tiempo jugado' FROM `jugadores`;
